@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { SimpleLineIcons } from "@expo/vector-icons";
+import { urlFor } from "../sanity";
 
 const RestaurantsCard = ({
   id,
@@ -19,7 +20,7 @@ const RestaurantsCard = ({
     <TouchableOpacity className="bg-white mr-3 shadow">
       <Image
         source={{
-          uri: imageUrl,
+          uri: urlFor(imageUrl).url(),
         }}
         className="h-36 w-64 rounded-sm"
       />
