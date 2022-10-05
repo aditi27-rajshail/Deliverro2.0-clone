@@ -3,6 +3,7 @@ import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { urlFor } from "../sanity";
+import { useNavigation } from "@react-navigation/native";
 
 const RestaurantsCard = ({
   id,
@@ -16,8 +17,25 @@ const RestaurantsCard = ({
   long,
   lat,
 }) => {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity className="bg-white mr-3 shadow">
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate("Restaurant", {
+          id,
+          imageUrl,
+          title,
+          rating,
+          genre,
+          address,
+          short_descripion,
+          dishes,
+          long,
+          lat,
+        });
+      }}
+      className="bg-white mr-3 shadow"
+    >
       <Image
         source={{
           uri: urlFor(imageUrl).url(),
@@ -34,7 +52,7 @@ const RestaurantsCard = ({
         </View>
         <View className="flex-row items-center space-x-1">
           <SimpleLineIcons name="location-pin" size={20} color="gray" />
-          <Text className="text-gray-500 text-xs">Nearby . {genre}</Text>
+          <Text className="text-gray-500 text-xs">Nearby . {address}</Text>
         </View>
       </View>
     </TouchableOpacity>
