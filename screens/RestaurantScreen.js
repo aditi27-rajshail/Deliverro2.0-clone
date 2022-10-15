@@ -81,7 +81,7 @@ const RestaurantScreen = () => {
             key={singledish._id}
             id={singledish._id}
             name={singledish.name}
-            descr={singledish.short_descripion}
+            descr={singledish.short_description}
             price={singledish.price}
             image={singledish.image}
           />
