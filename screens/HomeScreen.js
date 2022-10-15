@@ -33,7 +33,7 @@ const HomeScreen = () => {
 ...,
   restaurants[]->{
     ...,
-    dishes[]->
+    dish[]->
   }
 }`
       )
@@ -41,7 +41,6 @@ const HomeScreen = () => {
         setFeaturedCategory(data);
       });
   }, []);
-
   return (
     <SafeAreaView style={SafeViewAndroid.AndroidSafeArea} className="p-1">
       <View className="flex-row pb-3 items-center mx-4 space-x-2">

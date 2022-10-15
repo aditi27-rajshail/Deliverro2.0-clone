@@ -13,7 +13,7 @@ const RestaurantsCard = ({
   genre,
   address,
   short_descripion,
-  dishes,
+  dish,
   long,
   lat,
 }) => {
@@ -29,7 +29,7 @@ const RestaurantsCard = ({
           genre,
           address,
           short_descripion,
-          dishes,
+          dish,
           long,
           lat,
         });

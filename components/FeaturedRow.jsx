@@ -4,7 +4,7 @@ import { AntDesign } from "@expo/vector-icons";
 import RestaurantsCard from "./RestaurantsCard";
 import sanityClient from "../sanity";
 
-const FeaturedRow = ({ id, title, description }) => {
+const FeaturedRow = ({ id, title, description, dish }) => {
   const [restaurants, setRestaurants] = useState([]);
   useEffect(() => {
     sanityClient
@@ -13,7 +13,7 @@ const FeaturedRow = ({ id, title, description }) => {
            ...,
            restaurants[]->{
            ...,
-           dishes[]->,
+           dish[]->,
            type-> {
            name
           }
@@ -26,7 +26,6 @@ const FeaturedRow = ({ id, title, description }) => {
         setRestaurants(data?.restaurants);
       });
   }, [id]);
-
   return (
     <View>
       <View className="mt-4 flex-row items-center justify-between px-4">
@@ -53,7 +52,7 @@ const FeaturedRow = ({ id, title, description }) => {
             genre={restaurant.type?.name}
             address={restaurant.address}
             short_descripion={restaurant.short_description}
-            dishes={restaurant.dishes}
+            dish={restaurant.dish}
             long={restaurant.long}
             lat={restaurant.lat}
           />
