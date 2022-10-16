@@ -3,7 +3,12 @@ import React, { useState } from "react";
 import { urlFor } from "../sanity";
 import { formatCurrency } from "react-native-format-currency";
 import { AntDesign } from "@expo/vector-icons";
-import { addToBasket, selectBasketItems } from "../featured/basketSlice";
+import {
+  addToBasket,
+  removeFromBasket,
+  selectBasketItems,
+  selectBasketItemWithId,
+} from "../featured/basketSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const DishRow = ({ id, name, descr, price, image }) => {
@@ -11,11 +16,16 @@ const DishRow = ({ id, name, descr, price, image }) => {
     amount: Number(price),
     code: "INR",
   });
-  const items = useSelector(selectBasketItems);
+  const items = useSelector((state) => selectBasketItemWithId(state, id));
   const dispatch = useDispatch();
   const [isPressed, setIsPressed] = useState(false);
   const addItemsTobasket = () => {
     dispatch(addToBasket({ id, name, descr, price, image }));
+  };
+
+  const removeItemsFromBasket = () => {
+    if (!items.length > 0) return;
+    dispatch(removeFromBasket({ id }));
   };
   return (
     <>
@@ -51,8 +61,15 @@ const DishRow = ({ id, name, descr, price, image }) => {
       {isPressed && (
         <View className="bg-white px-4">
           <View className="flex-row items-center space-x-2 pb-3">
-            <TouchableOpacity>
-              <AntDesign name="minuscircle" size={25} color="#00CCBB" />
+            <TouchableOpacity
+              onPress={removeItemsFromBasket}
+              disabled={!items.length}
+            >
+              <AntDesign
+                name="minuscircle"
+                size={25}
+                color={items.length > 0 ? "#00CCBB" : "gray"}
+              />
             </TouchableOpacity>
             <Text>{items.length}</Text>
             <TouchableOpacity onPress={addItemsTobasket}>
