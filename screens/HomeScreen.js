@@ -15,7 +15,6 @@ import { Ionicons } from "@expo/vector-icons";
 import Categories from "../components/Categories";
 import FeaturedRow from "../components/FeaturedRow";
 import sanityClient from "../sanity";
-import category from "../deliveroo/schemas/category";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
