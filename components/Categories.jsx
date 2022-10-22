@@ -15,7 +15,7 @@ const Categories = () => {
         setcategories(data);
       });
   }, []);
-
+  console.log("Categories", categories);
   return (
     <ScrollView
       contentContainerStyle={{
@@ -26,7 +26,11 @@ const Categories = () => {
       showsHorizontalScrollIndicator={false}
     >
       {categories?.map((categorie) => (
-        <CategoryCard imgUrl={categorie.image} title={categorie.name} />
+        <CategoryCard
+          key={categorie._id}
+          imgUrl={categorie.image}
+          title={categorie.name}
+        />
       ))}
     </ScrollView>
   );
