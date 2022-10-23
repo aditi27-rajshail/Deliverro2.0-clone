@@ -114,7 +114,10 @@ const BasketScreen = () => {
               {ItemPriceFormat(basketTotal + 40)}
             </Text>
           </View>
-          <TouchableOpacity className="bg-[#00CCBB] rounded-lg p-4">
+          <TouchableOpacity
+            onPress={() => navigation.navigate("PreparingOrderScreen")}
+            className="bg-[#00CCBB] rounded-lg p-4"
+          >
             <Text className="text-white text-l font-bold text-center">
               Place Order
             </Text>
