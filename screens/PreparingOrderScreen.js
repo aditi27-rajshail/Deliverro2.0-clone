@@ -9,8 +9,8 @@ const PreparingOrderScreen = () => {
   const navigation = useNavigation();
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate("Basket");
-    }, 5000);
+      navigation.navigate("Delivery");
+    }, 3000);
   }, []);
 
   return (
